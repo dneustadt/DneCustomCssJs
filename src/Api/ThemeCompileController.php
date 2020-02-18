@@ -25,7 +25,7 @@ class ThemeCompileController extends AbstractController
     }
 
     /**
-     * @Route("/api/v{version}/_action/dne-customcssjs/compile", name="api.action.core.wbm-tagmanager.export", methods={"GET"})
+     * @Route("/api/v{version}/_action/dne-customcssjs/compile", name="api.action.core.dne-customcssjs.compile", methods={"GET"})
      */
     public function compile(): JsonResponse
     {
