@@ -10,7 +10,6 @@ _If you want to buy me a cup of coffee or support the development of this free e
 The plugin offers the following features:
 
 * Create unlimited containers of JavaScript and/or CSS/SCSS
-* Each container can be limited to any number of shops/subshops
 * SCSS variables and mixins are inherited from themes and plugins and can be accessed
 * JS/SCSS is injected into theme compilation. This means no dependency conflicts or additional resource requests.
 * Languages: English, German

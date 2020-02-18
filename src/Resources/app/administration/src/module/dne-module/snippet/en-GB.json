@@ -10,7 +10,8 @@
             "activeLabel": "Active",
             "saveButton": "Save",
             "saveCompileButton": "Save & Compile",
-            "cancelButton": "Cancel"
+            "cancelButton": "Cancel",
+            "donateText": "Click here to support this free extension or if you want to buy me a cup of coffee"
         }
     }
 }

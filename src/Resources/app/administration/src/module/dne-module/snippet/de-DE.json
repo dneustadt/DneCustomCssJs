@@ -10,7 +10,8 @@
             "activeLabel": "Aktiv",
             "saveButton": "Speichern",
             "saveCompileButton": "Speichern & Kompilieren",
-            "cancelButton": "Abbrechen"
+            "cancelButton": "Abbrechen",
+            "donateText": "Klicken Sie hier, wenn Sie dieses kostenlose Plugin unterstützen oder mir einen Kaffee ausgeben möchten"
         }
     }
 }
