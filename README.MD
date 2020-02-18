@@ -1,9 +1,11 @@
-Custom JavaScript And CSS/LESS Containers for Shopware 6
+Custom JavaScript And CSS/SCSS Containers for Shopware 6
 =====
 [![Donate](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=88UMDD53QSYK6&source=url)
 
 This plugin for [Shopware 6](https://www.shopware.de) features a backend container manager to easily add custom
-JavaScript and/or CSS/LESS to the theme compilation.
+JavaScript and/or CSS/SCSS to the theme compilation.
+
+This plugin is the follow-up for the [Shopware 5.x version](https://github.com/dneustadt/DneCustomJsCss).
 
 _If you want to buy me a cup of coffee or support the development of this free extension, feel free to donate :)_
 
@@ -28,4 +30,4 @@ Clone this repository into a folder called **DneCustomCssJs** within the **custo
 
 Usage
 =====
-The module will be accessible in backend by a new menu entry called _Custom JavaScript/CSS_ under the _Configuration_ menu tab.
+The module will be accessible in backend by a new menu entry called _Custom CSS/JS_.
