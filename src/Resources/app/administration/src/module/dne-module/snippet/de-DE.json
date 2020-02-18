@@ -1,0 +1,16 @@
+{
+    "dne-customcssjs": {
+        "modules": {
+            "menu": "Custom CSS/JS",
+            "title": "CSS/JS Container",
+            "addModulesButton": "Container hinzufügen",
+            "nameLabel": "Name",
+            "cssLabel": "CSS/SCSS",
+            "jsLabel": "JavaScript",
+            "activeLabel": "Aktiv",
+            "saveButton": "Speichern",
+            "saveCompileButton": "Speichern & Kompilieren",
+            "cancelButton": "Abbrechen"
+        }
+    }
+}

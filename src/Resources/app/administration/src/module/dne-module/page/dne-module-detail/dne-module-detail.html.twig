@@ -1,0 +1,55 @@
+{% block dne_module_detail %}
+    <sw-page class="dne-module-detail">
+        <template slot="smart-bar-actions">
+            <sw-button :routerLink="{ name: 'dne.module.list' }">
+                {{ $t('dne-customcssjs.modules.cancelButton') }}
+            </sw-button>
+
+            <sw-button-process
+                    :isLoading="isLoading"
+                    :processSuccess="processSuccess"
+                    variant="primary"
+                    @process-finish="saveFinish"
+                    @click="onClickSave">
+                {{ $t('dne-customcssjs.modules.saveButton') }}
+            </sw-button-process>
+
+            <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSaveCompile">
+                {{ $t('dne-customcssjs.modules.saveCompileButton') }}
+            </sw-button-process>
+        </template>
+
+        <template slot="content">
+            <sw-card-view>
+                <sw-card v-if="module" :isLoading="isLoading">
+                    <sw-checkbox-field :label="$t('dne-customcssjs.modules.activeLabel')" v-model="module.active"></sw-checkbox-field>
+
+                    <sw-field :label="$t('dne-customcssjs.modules.nameLabel')" v-model="module.name"></sw-field>
+
+                    <sw-code-editor
+                        :label="$t('dne-customcssjs.modules.cssLabel')"
+                        name="css"
+                        identifier="value"
+                        completionMode="entity"
+                        :editorConfig="editorConfigSass"
+                        v-model="module.css">
+                    </sw-code-editor>
+
+                    <sw-code-editor
+                        :label="$t('dne-customcssjs.modules.jsLabel')"
+                        name="js"
+                        identifier="value"
+                        completionMode="entity"
+                        :editorConfig="editorConfigJs"
+                        v-model="module.js">
+                    </sw-code-editor>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

@@ -1,0 +1,41 @@
+{
+    "name": "dne/custom-css-js",
+    "description": "Custom CSS/JS",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "*"
+    },
+    "authors": [
+        {
+            "name": "David Neustadt"
+        }
+    ],
+    "extra": {
+        "shopware-plugin-class": "Dne\\CustomCssJs\\DneCustomCssJs",
+        "copyright": "(c) David Neustadt",
+        "label": {
+            "de-DE": "Custom CSS/JS",
+            "en-GB": "Custom CSS/JS"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Dne\\CustomCssJs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dne\\CustomCssJs\\Test\\": "tests/"
+        }
+    },
+    "suggest": {
+        "shopware/storefront": "Require '6.1'.",
+        "shopware/administration": "Require '6.1'. Allows you to to set up the plugin easily"
+    },
+    "conflict": {
+        "shopware/storefront": "<6,>=7",
+        "shopware/administration": "<6,>=7"
+    }
+}

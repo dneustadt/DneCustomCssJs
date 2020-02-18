@@ -1,0 +1,8 @@
+{
+    "name": "dnecustomcssjs",
+    "version": "1.0.0",
+    "description": "Custom CSS/JS",
+    "main": "main.js",
+    "author": "David Neustadt",
+    "license": "MIT"
+}

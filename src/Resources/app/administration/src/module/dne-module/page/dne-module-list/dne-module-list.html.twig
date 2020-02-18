@@ -1,0 +1,24 @@
+{% block dne_module_list %}
+    <sw-page class="dne-module-list">
+        {% block dne_module_list_smart_bar_actions %}
+            <template slot="smart-bar-actions">
+                <sw-button variant="primary" :routerLink="{ name: 'dne.module.create' }">
+                    {{ $t('dne-customcssjs.modules.addModulesButton') }}
+                </sw-button>
+            </template>
+        {% endblock %}
+
+        <template slot="content">
+            {% block dne_module_list_content %}
+                <sw-entity-listing
+                        v-if="modules"
+                        :items="modules"
+                        :repository="repository"
+                        :showSelection="false"
+                        :columns="columns"
+                        detailRoute="dne.module.detail">
+                </sw-entity-listing>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}
