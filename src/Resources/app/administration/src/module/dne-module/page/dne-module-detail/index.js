@@ -1,4 +1,5 @@
 import template from './dne-module-detail.html.twig';
+import './vendor/mode-scss';
 
 const { Component, Mixin } = Shopware;
 const { mapApiErrors } = Shopware.Component.getComponentHelper();
@@ -49,7 +50,7 @@ Component.register('dne-module-detail', {
         },
         editorConfigSass() {
             return {
-                mode: 'ace/mode/css'
+                mode: 'ace/mode/scss'
             };
         },
         ...mapApiErrors('module', ['name'])
