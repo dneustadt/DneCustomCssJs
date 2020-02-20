@@ -1,6 +1,5 @@
 import './page/dne-module-list';
 import './page/dne-module-detail';
-import './page/dne-module-create';
 import deDE from './snippet/de-DE.json';
 import enGB from './snippet/en-GB.json';
 
@@ -27,10 +26,17 @@ Module.register('dne-module', {
             path: 'detail/:id',
             meta: {
                 parentPath: 'dne.module.list'
+            },
+            props: {
+                default(route) {
+                    return {
+                        moduleId: route.params.id
+                    };
+                }
             }
         },
         create: {
-            component: 'dne-module-create',
+            component: 'dne-module-detail',
             path: 'create',
             meta: {
                 parentPath: 'dne.module.list'

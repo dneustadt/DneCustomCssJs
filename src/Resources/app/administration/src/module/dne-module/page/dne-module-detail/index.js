@@ -1,6 +1,7 @@
 import template from './dne-module-detail.html.twig';
 
 const { Component, Mixin } = Shopware;
+const { mapApiErrors } = Shopware.Component.getComponentHelper();
 
 Component.register('dne-module-detail', {
     template,
@@ -32,6 +33,14 @@ Component.register('dne-module-detail', {
         };
     },
 
+    props: {
+        moduleId: {
+            type: String,
+            required: false,
+            default: null
+        }
+    },
+
     computed: {
         editorConfigJs() {
             return {
@@ -42,7 +51,8 @@ Component.register('dne-module-detail', {
             return {
                 mode: 'ace/mode/css'
             };
-        }
+        },
+        ...mapApiErrors('module', ['name'])
     },
 
     created() {
@@ -55,11 +65,15 @@ Component.register('dne-module-detail', {
 
     methods: {
         getModule() {
-            this.repository
-                .get(this.$route.params.id, Shopware.Context.api)
-                .then((entity) => {
-                    this.module = entity;
-                });
+            if (this.moduleId) {
+                this.repository
+                    .get(this.moduleId, Shopware.Context.api)
+                    .then((entity) => {
+                        this.module = entity;
+                    });
+            } else {
+                this.module = this.repository.create(Shopware.Context.api);
+            }
         },
 
         onClickSave() {
@@ -68,15 +82,20 @@ Component.register('dne-module-detail', {
             return this.repository
                 .save(this.module, Shopware.Context.api)
                 .then(() => {
+                    if (!this.moduleId) {
+                        this.moduleId = this.module.id;
+                    }
                     this.getModule();
                     this.isLoading = false;
                     this.processSuccess = true;
                 }).catch((exception) => {
                     this.isLoading = false;
-                    this.createNotificationError({
-                        title: 'Error',
-                        message: exception
-                    });
+                    if (module.name && module.name.length) {
+                        this.createNotificationError({
+                            title: 'Error',
+                            message: exception
+                        });
+                    }
                 });
         },
 

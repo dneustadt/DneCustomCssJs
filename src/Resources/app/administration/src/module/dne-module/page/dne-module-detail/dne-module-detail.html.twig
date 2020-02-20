@@ -29,7 +29,13 @@
                 <sw-card v-if="module" :isLoading="isLoading">
                     <sw-checkbox-field :label="$t('dne-customcssjs.modules.activeLabel')" v-model="module.active"></sw-checkbox-field>
 
-                    <sw-field :label="$t('dne-customcssjs.modules.nameLabel')" v-model="module.name"></sw-field>
+                    <sw-field type="text"
+                              :label="$t('dne-customcssjs.modules.nameLabel')"
+                              v-model="module.name"
+                              validation="required"
+                              :error="moduleNameError"
+                              required>
+                    </sw-field>
 
                     <sw-code-editor
                         :label="$t('dne-customcssjs.modules.cssLabel')"
