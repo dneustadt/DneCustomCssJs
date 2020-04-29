@@ -3,13 +3,9 @@
 namespace Dne\CustomCssJs\Components;
 
 use Doctrine\DBAL\Connection;
-use InvalidArgumentException;
-use League\Flysystem\FileExistsException;
-use League\Flysystem\FileNotFoundException;
 use League\Flysystem\FilesystemInterface;
 use League\Flysystem\Handler;
 use League\Flysystem\PluginInterface;
-use League\Flysystem\RootViolationException;
 
 class FilesystemDecorator implements FilesystemInterface
 {
