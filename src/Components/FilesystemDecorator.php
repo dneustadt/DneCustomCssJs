@@ -98,6 +98,11 @@ class FilesystemDecorator implements FilesystemInterface
         return $this->filesystem->copy($path, $newpath);
     }
 
+    public function copyBatch($assets)
+    {
+        return $this->filesystem->copyBatch($assets);
+    }
+
     public function delete($path)
     {
         return $this->filesystem->delete($path);

@@ -8,20 +8,33 @@ use Doctrine\DBAL\Connection;
 use League\Flysystem\FilesystemInterface;
 use ScssPhp\ScssPhp\Formatter\Crunched;
 use ScssPhp\ScssPhp\Formatter\Expanded;
+use Shopware\Storefront\Theme\ThemeFileImporterInterface;
 use Shopware\Storefront\Theme\ThemeFileResolver;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class ThemeCompiler extends \Shopware\Storefront\Theme\ThemeCompiler
 {
     public function __construct(
         FilesystemInterface $publicFilesystem,
+        FilesystemInterface $tempFilesystem,
         ThemeFileResolver $themeFileResolver,
         string $cacheDir,
         bool $debug,
+        EventDispatcherInterface $eventDispatcher,
+        ?ThemeFileImporterInterface $themeFileImporter = null,
         Connection $connection
     ) {
         $publicFilesystem = new FilesystemDecorator($publicFilesystem, $connection);
 
-        parent::__construct($publicFilesystem, $themeFileResolver, $cacheDir, $debug);
+        parent::__construct(
+            $publicFilesystem,
+            $tempFilesystem,
+            $themeFileResolver,
+            $cacheDir,
+            $debug,
+            $eventDispatcher,
+            $themeFileImporter
+        );
 
         $compiler = new Compiler($connection);
         $compiler->setImportPaths('');
