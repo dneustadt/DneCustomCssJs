@@ -1,7 +1,7 @@
 {
     "name": "dne/custom-css-js",
     "description": "Custom CSS/JS",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "type": "shopware-platform-plugin",
     "license": "MIT",
     "require": {
