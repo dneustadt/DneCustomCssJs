@@ -131,7 +131,7 @@ class FilesystemDecorator implements FilesystemInterface
             $scripts = $qb->execute()->fetchAll(\PDO::FETCH_COLUMN);
 
             if (is_array($scripts) && !empty($scripts)) {
-                $contents .= join(' ', $scripts);
+                $contents .= join(\PHP_EOL, $scripts);
             }
         }
 
