@@ -26,7 +26,7 @@ class Compiler extends \ScssPhp\ScssPhp\Compiler
         $styles = $qb->execute()->fetchAll(\PDO::FETCH_COLUMN);
 
         if (is_array($styles) && !empty($styles)) {
-            $code .= join(' ', $styles);
+            $code .= join(\PHP_EOL, $styles);
         }
 
         return parent::compile($code, $path);
