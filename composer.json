@@ -18,6 +18,18 @@
         "label": {
             "de-DE": "Custom CSS/JS",
             "en-GB": "Custom CSS/JS"
+        },
+        "description": {
+            "de-DE": "Fügt dem Backend einen Container Manager für JavaScript/SCSS hinzu.",
+            "en-GB": "Container manager to easily add custom JavaScript and/or SCSS to the theme compilation."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/david-neustadt.html",
+            "en-GB": "https://store.shopware.com/en/david-neustadt.html"
+        },
+        "supportLink": {
+            "de-DE": "https://davidneustadt.de",
+            "en-GB": "https://neustadt.dev"
         }
     },
     "autoload": {
