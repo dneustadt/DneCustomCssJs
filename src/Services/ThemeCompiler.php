@@ -8,6 +8,8 @@ use Doctrine\DBAL\Connection;
 use League\Flysystem\FilesystemInterface;
 use ScssPhp\ScssPhp\Formatter\Crunched;
 use ScssPhp\ScssPhp\Formatter\Expanded;
+use Shopware\Core\Framework\Adapter\Cache\CacheClearer;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
 use Shopware\Storefront\Theme\ThemeFileImporterInterface;
 use Shopware\Storefront\Theme\ThemeFileResolver;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -18,10 +20,12 @@ class ThemeCompiler extends \Shopware\Storefront\Theme\ThemeCompiler
         FilesystemInterface $publicFilesystem,
         FilesystemInterface $tempFilesystem,
         ThemeFileResolver $themeFileResolver,
-        string $cacheDir,
         bool $debug,
         EventDispatcherInterface $eventDispatcher,
-        ?ThemeFileImporterInterface $themeFileImporter = null,
+        ThemeFileImporterInterface $themeFileImporter,
+        EntityRepositoryInterface $mediaRepository,
+        iterable $packages,
+        CacheClearer $cacheClearer,
         Connection $connection
     ) {
         $publicFilesystem = new FilesystemDecorator($publicFilesystem, $connection);
@@ -30,10 +34,12 @@ class ThemeCompiler extends \Shopware\Storefront\Theme\ThemeCompiler
             $publicFilesystem,
             $tempFilesystem,
             $themeFileResolver,
-            $cacheDir,
             $debug,
             $eventDispatcher,
-            $themeFileImporter
+            $themeFileImporter,
+            $mediaRepository,
+            $packages,
+            $cacheClearer
         );
 
         $compiler = new Compiler($connection);

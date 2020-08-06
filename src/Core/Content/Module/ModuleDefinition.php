@@ -4,10 +4,11 @@ namespace Dne\CustomCssJs\Core\Content\Module;
 
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\BoolField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\AllowHtml;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextWithHtmlField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
@@ -36,8 +37,8 @@ class ModuleDefinition extends EntityDefinition
             (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
             (new StringField('name', 'name'))->addFlags(new Required()),
             (new BoolField('active', 'active')),
-            (new LongTextWithHtmlField('js', 'js')),
-            (new LongTextWithHtmlField('css', 'css')),
+            (new LongTextField('js', 'js'))->addFlags(new AllowHtml()),
+            (new LongTextField('css', 'css'))->addFlags(new AllowHtml()),
         ]);
     }
 }
