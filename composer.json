@@ -5,7 +5,7 @@
     "type": "shopware-platform-plugin",
     "license": "MIT",
     "require": {
-        "shopware/core": "*"
+        "shopware/core": "~v6.3.0"
     },
     "authors": [
         {
