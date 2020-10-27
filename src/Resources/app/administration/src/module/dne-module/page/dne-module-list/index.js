@@ -14,7 +14,8 @@ Component.register('dne-module-list', {
     data() {
         return {
             repository: null,
-            modules: null
+            modules: null,
+            isLoading: true
         };
     },
 
@@ -42,10 +43,28 @@ Component.register('dne-module-list', {
     created() {
         this.repository = this.repositoryFactory.create('dne_custom_js_css');
 
+        const httpClient = Shopware.Service('syncService').httpClient;
+        const basicHeaders = {
+            Authorization: `Bearer ${Shopware.Context.api.authToken.access}`,
+            'Content-Type': 'application/json'
+        };
+
         this.repository
             .search(new Criteria(), Shopware.Context.api)
             .then((result) => {
                 this.modules = result;
+                this.isLoading = false;
+
+                this.$nextTick().then(() => {
+                    this.$refs.listing.$on('delete-item-finish', () => {
+                        this.isLoading = true;
+                        httpClient.get('_action/dne-customcssjs/compile', { headers: basicHeaders }).then(() => {
+                            this.isLoading = false;
+                        }).catch(() => {
+                            this.isLoading = false;
+                        });
+                    });
+                });
             });
     }
 });

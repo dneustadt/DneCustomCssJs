@@ -12,12 +12,18 @@
             {% block dne_module_list_content %}
                 <sw-entity-listing
                         v-if="modules"
+                        ref="listing"
                         :items="modules"
                         :repository="repository"
                         :showSelection="false"
                         :columns="columns"
                         detailRoute="dne.module.detail">
                 </sw-entity-listing>
+                <div
+                        v-if="isLoading"
+                        class="sw-overlay">
+                    <sw-loader></sw-loader>
+                </div>
             {% endblock %}
         </template>
     </sw-page>
