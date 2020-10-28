@@ -3,6 +3,7 @@
 namespace Dne\CustomCssJs\Api;
 
 use Shopware\Core\Framework\Context;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\System\SalesChannel\SalesChannelCollection;
@@ -17,11 +18,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ThemeCompileController extends AbstractController
 {
+    /**
+     * @var ThemeService
+     */
     private $themeService;
 
-    public function __construct(ThemeService $themeService)
+    /**
+     * @var EntityRepositoryInterface
+     */
+    private $salesChannelRepository;
+
+    public function __construct(ThemeService $themeService, EntityRepositoryInterface $salesChannelRepository)
     {
         $this->themeService = $themeService;
+        $this->salesChannelRepository = $salesChannelRepository;
     }
 
     /**
@@ -51,7 +61,7 @@ class ThemeCompileController extends AbstractController
         $criteria->addAssociation('themes');
 
         /** @var SalesChannelCollection $result */
-        $result = $this->container->get('sales_channel.repository')->search($criteria, $context)->getEntities();
+        $result = $this->salesChannelRepository->search($criteria, $context)->getEntities();
 
         return $result;
     }
