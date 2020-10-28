@@ -1,6 +1,6 @@
 <?php
 
-namespace Dne\CustomCssJs\Components;
+namespace Dne\CustomCssJs\Services;
 
 use Doctrine\DBAL\Connection;
 use League\Flysystem\FilesystemInterface;
