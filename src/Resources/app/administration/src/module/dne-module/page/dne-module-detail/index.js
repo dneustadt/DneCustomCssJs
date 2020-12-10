@@ -1,7 +1,7 @@
 import template from './dne-module-detail.html.twig';
 import './vendor/mode-scss';
 
-const { Component, Mixin } = Shopware;
+const { Component, Mixin, Filter } = Shopware;
 const { mapApiErrors } = Shopware.Component.getComponentHelper();
 
 Component.register('dne-module-detail', {
@@ -111,12 +111,21 @@ Component.register('dne-module-detail', {
 
                 this.httpClient.get('_action/dne-customcssjs/compile', { headers: basicHeaders }).then(() => {
                     this.isLoading = false;
-                }).catch((exception) => {
+                }).catch((errorResponse) => {
                     this.isLoading = false;
-                    this.createNotificationError({
-                        title: 'Error',
-                        message: exception
-                    });
+                    try {
+                        this.createNotificationError({
+                            title: errorResponse.response.data.errors[0].title,
+                            message: Filter.getByName('truncate')(errorResponse.response.data.errors[0].detail, 300),
+                            autoClose: false
+                        });
+                    } catch(e) {
+                        this.createNotificationError({
+                            title: errorResponse.title,
+                            message: errorResponse.message,
+                            autoClose: false
+                        });
+                    }
                 });
             });
         },

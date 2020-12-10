@@ -46,9 +46,8 @@ Module.register('dne-module', {
 
     navigation: [{
         label: 'dne-customcssjs.modules.menu',
-        color: '#ff3d58',
         path: 'dne.module.list',
-        icon: 'default-text-code',
+        parent: 'sw-settings',
         position: 100
     }]
 });

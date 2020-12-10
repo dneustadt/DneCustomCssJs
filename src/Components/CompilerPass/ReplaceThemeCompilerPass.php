@@ -13,6 +13,7 @@ class ReplaceThemeCompilerPass implements CompilerPassInterface
     {
         $container->getDefinition('Shopware\Storefront\Theme\ThemeCompiler')
             ->setClass(ThemeCompiler::class)
-            ->addArgument(new Reference('Doctrine\DBAL\Connection'));
+            ->addArgument(new Reference('Doctrine\DBAL\Connection'))
+            ->replaceArgument(0, new Reference('Dne\CustomCssJs\Services\FilesystemDecorator'));
     }
 }
