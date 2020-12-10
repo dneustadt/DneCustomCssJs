@@ -19,7 +19,7 @@ The plugin offers the following features:
 Requirements
 -----
 
-1.0.7
+1.0.8
 * Shopware >= 6.3
 
 Installation
@@ -30,4 +30,4 @@ Clone this repository into a folder called **DneCustomCssJs** within the **custo
 
 Usage
 =====
-The module will be accessible in backend by a new menu entry called _Custom CSS/JS_.
+The module will be accessible in backend by a new sub-menu entry called _Custom CSS/JS_ under _Settings_.
