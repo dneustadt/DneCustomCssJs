@@ -56,6 +56,7 @@ class ThemeCompilerSubscriber implements \Symfony\Component\EventDispatcher\Even
     public function getResources(string $field): string
     {
         $criteria = new Criteria();
+        $criteria->setLimit(1);
 
         $criteria->addFilter(
             new MultiFilter(MultiFilter::CONNECTION_AND, [
