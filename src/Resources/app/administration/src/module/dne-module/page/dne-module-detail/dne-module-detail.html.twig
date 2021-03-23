@@ -29,6 +29,12 @@
                 <sw-card v-if="module" :isLoading="isLoading">
                     <sw-checkbox-field :label="$t('dne-customcssjs.modules.activeLabel')" v-model="module.active"></sw-checkbox-field>
 
+                    <sw-entity-many-to-many-select
+                        :localMode="module.isNew()"
+                        :label="$t('dne-customcssjs.modules.salesChannelsLabel')"
+                        v-model="module.salesChannels">
+                    </sw-entity-many-to-many-select>
+
                     <sw-field type="text"
                               :label="$t('dne-customcssjs.modules.nameLabel')"
                               v-model="module.name"

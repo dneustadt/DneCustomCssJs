@@ -9,8 +9,10 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
+use Shopware\Core\System\SalesChannel\SalesChannelDefinition;
 
 class ModuleDefinition extends EntityDefinition
 {
@@ -39,6 +41,13 @@ class ModuleDefinition extends EntityDefinition
             (new BoolField('active', 'active')),
             (new LongTextField('js', 'js'))->addFlags(new AllowHtml()),
             (new LongTextField('css', 'css'))->addFlags(new AllowHtml()),
+            new ManyToManyAssociationField(
+                'salesChannels',
+                SalesChannelDefinition::class,
+                Aggregate\ModuleSalesChannel\ModuleSalesChannelDefinition::class,
+                'dne_custom_js_css_id',
+                'sales_channel_id'
+            ),
         ]);
     }
 }

@@ -9,6 +9,14 @@
             <tag name="shopware.entity.definition" entity="dne_custom_js_css" />
         </service>
 
+        <service id="Dne\CustomCssJs\Core\Content\Module\Aggregate\ModuleSalesChannel\ModuleSalesChannelDefinition">
+            <tag name="shopware.entity.definition" entity="dne_custom_js_css_sales_channel" />
+        </service>
+
+        <service id="Dne\CustomCssJs\Core\Content\SalesChannel\SalesChannelExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
         <service id="Dne\CustomCssJs\Subscriber\ThemeCompilerSubscriber">
             <argument type="service" id="dne_custom_js_css.repository"/>
             <tag name="kernel.event_subscriber" />

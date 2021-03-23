@@ -4,6 +4,7 @@
             "menu": "Custom CSS/JS",
             "title": "CSS/JS Container",
             "addModulesButton": "Add Container",
+            "salesChannelsLabel": "Sales channels",
             "nameLabel": "Name",
             "cssLabel": "CSS/SCSS",
             "jsLabel": "JavaScript",

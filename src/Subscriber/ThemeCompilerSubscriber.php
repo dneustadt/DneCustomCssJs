@@ -39,7 +39,7 @@ class ThemeCompilerSubscriber implements \Symfony\Component\EventDispatcher\Even
     {
         $styles = $event->getConcatenatedStyles();
 
-        $additionalStyles = $this->getResources('css');
+        $additionalStyles = $this->getResources('css', $event->getSalesChannelId());
 
         $event->setConcatenatedStyles($styles . \PHP_EOL . $additionalStyles);
     }
@@ -48,12 +48,12 @@ class ThemeCompilerSubscriber implements \Symfony\Component\EventDispatcher\Even
     {
         $scripts = $event->getConcatenatedScripts();
 
-        $additionalScripts = $this->getResources('js');
+        $additionalScripts = $this->getResources('js', $event->getSalesChannelId());
 
         $event->setConcatenatedScripts($scripts . \PHP_EOL . $additionalScripts);
     }
 
-    public function getResources(string $field): string
+    public function getResources(string $field, string $salesChannelId): string
     {
         $criteria = new Criteria();
         $criteria->setLimit(1);
@@ -61,6 +61,10 @@ class ThemeCompilerSubscriber implements \Symfony\Component\EventDispatcher\Even
         $criteria->addFilter(
             new MultiFilter(MultiFilter::CONNECTION_AND, [
                 new EqualsFilter('active', true),
+                new MultiFilter(MultiFilter::CONNECTION_OR, [
+                    new EqualsFilter('salesChannels.id', $salesChannelId),
+                    new EqualsFilter('salesChannels.id', null),
+                ]),
             ])
         );
 

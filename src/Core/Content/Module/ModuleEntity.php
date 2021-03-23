@@ -4,6 +4,7 @@ namespace Dne\CustomCssJs\Core\Content\Module;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
+use Shopware\Core\System\SalesChannel\SalesChannelCollection;
 
 class ModuleEntity extends Entity
 {
@@ -23,6 +24,11 @@ class ModuleEntity extends Entity
      * @var string
      */
     protected $response;
+
+    /**
+     * @var SalesChannelCollection|null
+     */
+    protected $salesChannels;
 
     public function getName(): string
     {
@@ -52,5 +58,15 @@ class ModuleEntity extends Entity
     public function setResponse(string $response): void
     {
         $this->response = $response;
+    }
+
+    public function getSalesChannels(): ?SalesChannelCollection
+    {
+        return $this->salesChannels;
+    }
+
+    public function setSalesChannels(?SalesChannelCollection $salesChannels): void
+    {
+        $this->salesChannels = $salesChannels;
     }
 }
