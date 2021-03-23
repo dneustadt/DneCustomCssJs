@@ -29,20 +29,22 @@
                 <sw-card v-if="module" :isLoading="isLoading">
                     <sw-checkbox-field :label="$t('dne-customcssjs.modules.activeLabel')" v-model="module.active"></sw-checkbox-field>
 
-                    <sw-entity-many-to-many-select
-                        :localMode="module.isNew()"
-                        :label="$t('dne-customcssjs.modules.salesChannelsLabel')"
-                        :placeholder="$t('dne-customcssjs.modules.salesChannelsAll')"
-                        v-model="module.salesChannels">
-                    </sw-entity-many-to-many-select>
+                    <sw-container columns="1fr 1fr" gap="16px">
+                        <sw-field type="text"
+                                  :label="$t('dne-customcssjs.modules.nameLabel')"
+                                  v-model="module.name"
+                                  validation="required"
+                                  :error="moduleNameError"
+                                  required>
+                        </sw-field>
 
-                    <sw-field type="text"
-                              :label="$t('dne-customcssjs.modules.nameLabel')"
-                              v-model="module.name"
-                              validation="required"
-                              :error="moduleNameError"
-                              required>
-                    </sw-field>
+                        <sw-entity-many-to-many-select
+                            :localMode="module.isNew()"
+                            :label="$t('dne-customcssjs.modules.salesChannelsLabel')"
+                            :placeholder="$t('dne-customcssjs.modules.salesChannelsAll')"
+                            v-model="module.salesChannels">
+                        </sw-entity-many-to-many-select>
+                    </sw-container>
 
                     <sw-code-editor
                         :label="$t('dne-customcssjs.modules.cssLabel')"

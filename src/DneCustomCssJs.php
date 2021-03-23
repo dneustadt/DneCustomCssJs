@@ -11,6 +11,9 @@ class DneCustomCssJs extends Plugin
     {
         if (!$uninstallContext->keepUserData()) {
             $this->container->get('Doctrine\DBAL\Connection')->executeQuery(
+                'DROP TABLE `dne_custom_js_css_sales_channel`;'
+            );
+            $this->container->get('Doctrine\DBAL\Connection')->executeQuery(
                 'DROP TABLE `dne_custom_js_css`;'
             );
         }
