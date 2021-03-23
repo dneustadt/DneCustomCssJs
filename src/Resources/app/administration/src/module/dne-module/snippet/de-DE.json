@@ -5,6 +5,7 @@
             "title": "CSS/JS Container",
             "addModulesButton": "Container hinzufügen",
             "salesChannelsLabel": "Verkaufskanäle",
+            "salesChannelsAll": "alle",
             "nameLabel": "Name",
             "cssLabel": "CSS/SCSS",
             "jsLabel": "JavaScript",
