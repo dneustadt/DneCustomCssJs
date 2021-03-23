@@ -46,8 +46,16 @@
                         </sw-entity-many-to-many-select>
                     </sw-container>
 
+                    <sw-field type="compactColorpicker"
+                              compact
+                              :alpha="false"
+                              style="float:right;"
+                              @input="pickColor">
+                    </sw-field>
+
                     <sw-code-editor
                         :label="$t('dne-customcssjs.modules.cssLabel')"
+                        ref="cssEditor"
                         name="css"
                         identifier="value"
                         completionMode="entity"

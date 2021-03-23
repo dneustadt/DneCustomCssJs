@@ -132,6 +132,21 @@ Component.register('dne-module-detail', {
 
         saveFinish() {
             this.processSuccess = false;
+        },
+
+        pickColor(hex) {
+            if (!this.$refs.cssEditor) {
+                return;
+            }
+
+            const editor = this.$refs.cssEditor.editor;
+
+            if (!editor) {
+                return;
+            }
+
+            editor.session.insert(editor.getCursorPosition(), hex);
+            editor.renderer.scrollCursorIntoView(editor.getCursorPosition(), 0.5);
         }
     }
 });
