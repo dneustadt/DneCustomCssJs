@@ -9,9 +9,9 @@
             <tag name="shopware.entity.definition" entity="dne_custom_js_css" />
         </service>
 
-        <service id="Dne\CustomCssJs\Services\FilesystemDecorator" public="true">
-            <argument type="service" id="shopware.filesystem.theme"/>
-            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        <service id="Dne\CustomCssJs\Subscriber\ThemeCompilerSubscriber">
+            <argument type="service" id="dne_custom_js_css.repository"/>
+            <tag name="kernel.event_subscriber" />
         </service>
 
         <service id="Dne\CustomCssJs\Api\ThemeCompileController" public="true">
