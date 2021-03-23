@@ -17,6 +17,9 @@
         <service id="Dne\CustomCssJs\Api\ThemeCompileController" public="true">
             <argument type="service" id="Shopware\Storefront\Theme\ThemeService"/>
             <argument type="service" id="sales_channel.repository"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
         </service>
     </services>
 </container>
