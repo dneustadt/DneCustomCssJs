@@ -1,4 +1,5 @@
 import template from './dne-module-detail.html.twig';
+import './dne-module-detail.scss';
 import './vendor/mode-scss';
 
 const { Component, Mixin, Filter } = Shopware;
