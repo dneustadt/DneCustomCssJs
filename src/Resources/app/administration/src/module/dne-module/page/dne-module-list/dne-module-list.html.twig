@@ -18,10 +18,24 @@
                         :showSelection="false"
                         :columns="columns"
                         detailRoute="dne.module.detail">
+                    <template #column-active="{ item }">
+                        <sw-data-grid-column-boolean
+                            :value="item.active"
+                            :isInlineEdit="false">
+                        </sw-data-grid-column-boolean>
+                    </template>
+                    <template #column-salesChannels="{ item }">
+                        <sw-event-action-list-expand-labels
+                            v-if="item.salesChannels.length"
+                            :items="item.salesChannels">
+                        </sw-event-action-list-expand-labels>
+                        <span v-else>
+                            {{ $t('dne-customcssjs.modules.salesChannelsAll') }}
+                        </span>
+                    </template>
                 </sw-entity-listing>
-                <div
-                        v-if="isLoading"
-                        class="sw-overlay">
+                <div v-if="isLoading"
+                     class="sw-overlay">
                     <sw-loader></sw-loader>
                 </div>
             {% endblock %}

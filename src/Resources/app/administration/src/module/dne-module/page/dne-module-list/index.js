@@ -28,15 +28,30 @@ Component.register('dne-module-list', {
 
     computed: {
         columns() {
-            return [{
-                property: 'name',
-                dataIndex: 'name',
-                label: this.$t('dne-customcssjs.modules.nameLabel'),
-                routerLink: 'dne.module.detail',
-                inlineEdit: 'string',
-                allowResize: true,
-                primary: true
-            }];
+            return [
+                {
+                    property: 'active',
+                    label: this.$t('dne-customcssjs.modules.activeLabel'),
+                    allowResize: false,
+                    align: 'center',
+                    width: '125px'
+                },
+                {
+                    property: 'name',
+                    dataIndex: 'name',
+                    label: this.$t('dne-customcssjs.modules.nameLabel'),
+                    routerLink: 'dne.module.detail',
+                    allowResize: true,
+                    primary: true
+                },
+                {
+                    property: 'salesChannels',
+                    dataIndex: 'salesChannels',
+                    label: this.$t('dne-customcssjs.modules.salesChannelsLabel'),
+                    allowResize: true,
+                    sortable: false
+                }
+            ];
         }
     },
 
@@ -48,9 +63,13 @@ Component.register('dne-module-list', {
             Authorization: `Bearer ${Shopware.Context.api.authToken.access}`,
             'Content-Type': 'application/json'
         };
+        const criteria = new Criteria();
+
+        criteria.addAssociation('salesChannels');
+        criteria.addSorting(Criteria.sort('name', 'ASC', false));
 
         this.repository
-            .search(new Criteria(), Shopware.Context.api)
+            .search(criteria, Shopware.Context.api)
             .then((result) => {
                 this.modules = result;
                 this.isLoading = false;
