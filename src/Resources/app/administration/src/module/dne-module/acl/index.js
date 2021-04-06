@@ -8,11 +8,19 @@ Shopware.Service('privileges').addPrivilegeMappingEntry({
             dependencies: []
         },
         editor: {
-            privileges: ['dne_custom_js_css:update'],
+            privileges: [
+                'dne_custom_js_css:update',
+                'dne_custom_js_css_sales_channel:create',
+                'dne_custom_js_css_sales_channel:delete'
+            ],
             dependencies: []
         },
         creator: {
-            privileges: ['dne_custom_js_css:create'],
+            privileges: [
+                'dne_custom_js_css:create',
+                'dne_custom_js_css_sales_channel:create',
+                'dne_custom_js_css_sales_channel:delete'
+            ],
             dependencies: []
         },
         deleter: {

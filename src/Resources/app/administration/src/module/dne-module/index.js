@@ -30,7 +30,7 @@ Module.register('dne-module', {
             path: 'detail/:id',
             meta: {
                 parentPath: 'dne.module.list',
-                privilege: 'dne_custom_js_css.editor'
+                privilege: 'dne_custom_js_css.viewer'
             },
             props: {
                 default(route) {
