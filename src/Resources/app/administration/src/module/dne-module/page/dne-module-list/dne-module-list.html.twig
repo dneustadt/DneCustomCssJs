@@ -2,7 +2,11 @@
     <sw-page class="dne-module-list">
         {% block dne_module_list_smart_bar_actions %}
             <template slot="smart-bar-actions">
-                <sw-button variant="primary" :routerLink="{ name: 'dne.module.create' }">
+                <sw-button
+                    variant="primary"
+                    :routerLink="{ name: 'dne.module.create' }"
+                    :disabled="!acl.can('dne_custom_js_css.creator')"
+                >
                     {{ $t('dne-customcssjs.modules.addModulesButton') }}
                 </sw-button>
             </template>

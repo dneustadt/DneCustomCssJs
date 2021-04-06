@@ -10,7 +10,8 @@ Component.register('dne-module-detail', {
 
     inject: [
         'repositoryFactory',
-        'context'
+        'context',
+        'acl'
     ],
 
 

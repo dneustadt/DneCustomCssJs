@@ -8,7 +8,8 @@ Component.register('dne-module-list', {
 
     inject: [
         'repositoryFactory',
-        'context'
+        'context',
+        'acl'
     ],
 
     data() {

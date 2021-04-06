@@ -6,8 +6,10 @@
             </sw-button>
 
             <sw-button-process
+                    v-if="module"
                     :isLoading="isLoading"
                     :processSuccess="processSuccess"
+                    :disabled="module.isNew() ? !acl.can('dne_custom_js_css.creator') : !acl.can('dne_custom_js_css.editor')"
                     variant="primary"
                     @process-finish="saveFinish"
                     @click="onClickSave">
@@ -15,11 +17,13 @@
             </sw-button-process>
 
             <sw-button-process
-                :isLoading="isLoading"
-                :processSuccess="processSuccess"
-                variant="primary"
-                @process-finish="saveFinish"
-                @click="onClickSaveCompile">
+                    v-if="module"
+                    :isLoading="isLoading"
+                    :processSuccess="processSuccess"
+                    :disabled="module.isNew() ? !acl.can('dne_custom_js_css.creator') : !acl.can('dne_custom_js_css.editor')"
+                    variant="primary"
+                    @process-finish="saveFinish"
+                    @click="onClickSaveCompile">
                 {{ $t('dne-customcssjs.modules.saveCompileButton') }}
             </sw-button-process>
         </template>

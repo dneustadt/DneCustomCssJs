@@ -16,5 +16,12 @@
             "donateText": "Klicken Sie hier, wenn Sie dieses kostenlose Plugin unterstützen oder mir einen Kaffee ausgeben möchten",
             "credit": "David Neustadt - kontakt@davidneustadt.de - https://neustadt.dev"
         }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "dne_custom_js_css": {
+                "label": "Custom CSS/JS"
+            }
+        }
     }
 }
