@@ -1,6 +1,6 @@
 import template from './dne-module-detail.html.twig';
 import './dne-module-detail.scss';
-import './vendor/mode-scss';
+import '@ace-builds/mode-scss';
 
 const { Component, Mixin, Filter } = Shopware;
 const { mapPropertyErrors } = Shopware.Component.getComponentHelper();
@@ -47,7 +47,8 @@ Component.register('dne-module-detail', {
     computed: {
         editorConfigJs() {
             return {
-                mode: 'ace/mode/javascript'
+                mode: 'ace/mode/javascript',
+                useWorker: false
             };
         },
         editorConfigSass() {
