@@ -4,6 +4,8 @@
             "menu": "Custom CSS/JS",
             "title": "CSS/JS Container",
             "addModulesButton": "Container hinzufügen",
+            "salesChannelsLabel": "Verkaufskanäle",
+            "salesChannelsAll": "alle",
             "nameLabel": "Name",
             "cssLabel": "CSS/SCSS",
             "jsLabel": "JavaScript",
@@ -11,7 +13,14 @@
             "saveButton": "Speichern",
             "saveCompileButton": "Speichern & Kompilieren",
             "cancelButton": "Abbrechen",
-            "donateText": "Klicken Sie hier, wenn Sie dieses kostenlose Plugin unterstützen oder mir einen Kaffee ausgeben möchten"
+            "migrationNotice": "HINWEIS: Zukünftige Versionen dieses Plugins werden über das Friends Of Shopware Entwicklerkollektiv im Shopware Store bereitgestellt."
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "dne_custom_js_css": {
+                "label": "Custom CSS/JS"
+            }
         }
     }
 }

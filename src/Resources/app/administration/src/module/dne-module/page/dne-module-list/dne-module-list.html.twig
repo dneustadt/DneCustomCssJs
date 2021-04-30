@@ -2,7 +2,11 @@
     <sw-page class="dne-module-list">
         {% block dne_module_list_smart_bar_actions %}
             <template slot="smart-bar-actions">
-                <sw-button variant="primary" :routerLink="{ name: 'dne.module.create' }">
+                <sw-button
+                    variant="primary"
+                    :routerLink="{ name: 'dne.module.create' }"
+                    :disabled="!acl.can('dne_custom_js_css.creator')"
+                >
                     {{ $t('dne-customcssjs.modules.addModulesButton') }}
                 </sw-button>
             </template>
@@ -12,12 +16,32 @@
             {% block dne_module_list_content %}
                 <sw-entity-listing
                         v-if="modules"
+                        ref="listing"
                         :items="modules"
                         :repository="repository"
                         :showSelection="false"
                         :columns="columns"
                         detailRoute="dne.module.detail">
+                    <template #column-active="{ item }">
+                        <sw-data-grid-column-boolean
+                            :value="item.active"
+                            :isInlineEdit="false">
+                        </sw-data-grid-column-boolean>
+                    </template>
+                    <template #column-salesChannels="{ item }">
+                        <sw-event-action-list-expand-labels
+                            v-if="item.salesChannels.length"
+                            :items="item.salesChannels">
+                        </sw-event-action-list-expand-labels>
+                        <span v-else>
+                            {{ $t('dne-customcssjs.modules.salesChannelsAll') }}
+                        </span>
+                    </template>
                 </sw-entity-listing>
+                <div v-if="isLoading"
+                     class="sw-overlay">
+                    <sw-loader></sw-loader>
+                </div>
             {% endblock %}
         </template>
     </sw-page>

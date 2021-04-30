@@ -14,7 +14,7 @@ class Migration1572257501Bundle extends MigrationStep
 
     public function update(Connection $connection): void
     {
-        $connection->executeQuery('
+        $connection->executeStatement('
             CREATE TABLE IF NOT EXISTS `dne_custom_js_css` (
               `id` BINARY(16) NOT NULL,
               `name` varchar(255) NOT NULL,

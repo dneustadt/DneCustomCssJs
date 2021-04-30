@@ -1,0 +1,13 @@
+.dne-module-detail {
+    .sw-colorpicker {
+        float: right;
+
+        &__colorpicker--compact {
+            left: -220px;
+
+            &:before {
+                left: 220px;
+            }
+        }
+    }
+}

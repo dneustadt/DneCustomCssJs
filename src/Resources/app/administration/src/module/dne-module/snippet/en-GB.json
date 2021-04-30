@@ -4,6 +4,8 @@
             "menu": "Custom CSS/JS",
             "title": "CSS/JS Container",
             "addModulesButton": "Add Container",
+            "salesChannelsLabel": "Sales channels",
+            "salesChannelsAll": "all",
             "nameLabel": "Name",
             "cssLabel": "CSS/SCSS",
             "jsLabel": "JavaScript",
@@ -11,7 +13,14 @@
             "saveButton": "Save",
             "saveCompileButton": "Save & Compile",
             "cancelButton": "Cancel",
-            "donateText": "Click here to support this free extension or if you want to buy me a cup of coffee"
+            "migrationNotice": "NOTICE: Future versions of this plugins will be provided by the developer collective Friends Of Shopware within the Shopware Store"
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "dne_custom_js_css": {
+                "label": "Custom CSS/JS"
+            }
         }
     }
 }

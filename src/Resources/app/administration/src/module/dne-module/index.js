@@ -1,5 +1,6 @@
 import './page/dne-module-list';
 import './page/dne-module-detail';
+import './acl';
 import deDE from './snippet/de-DE.json';
 import enGB from './snippet/en-GB.json';
 
@@ -19,13 +20,17 @@ Module.register('dne-module', {
     routes: {
         list: {
             component: 'dne-module-list',
-            path: 'list'
+            path: 'list',
+            meta: {
+                privilege: 'dne_custom_js_css.viewer'
+            }
         },
         detail: {
             component: 'dne-module-detail',
             path: 'detail/:id',
             meta: {
-                parentPath: 'dne.module.list'
+                parentPath: 'dne.module.list',
+                privilege: 'dne_custom_js_css.viewer'
             },
             props: {
                 default(route) {
@@ -39,16 +44,16 @@ Module.register('dne-module', {
             component: 'dne-module-detail',
             path: 'create',
             meta: {
-                parentPath: 'dne.module.list'
+                parentPath: 'dne.module.list',
+                privilege: 'dne_custom_js_css.creator'
             }
         }
     },
 
     navigation: [{
         label: 'dne-customcssjs.modules.menu',
-        color: '#ff3d58',
         path: 'dne.module.list',
-        icon: 'default-text-code',
+        parent: 'sw-extension',
         position: 100
     }]
 });

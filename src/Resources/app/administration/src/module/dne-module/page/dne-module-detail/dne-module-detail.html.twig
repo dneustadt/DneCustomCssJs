@@ -6,8 +6,10 @@
             </sw-button>
 
             <sw-button-process
+                    v-if="module"
                     :isLoading="isLoading"
                     :processSuccess="processSuccess"
+                    :disabled="module.isNew() ? !acl.can('dne_custom_js_css.creator') : !acl.can('dne_custom_js_css.editor')"
                     variant="primary"
                     @process-finish="saveFinish"
                     @click="onClickSave">
@@ -15,11 +17,13 @@
             </sw-button-process>
 
             <sw-button-process
-                :isLoading="isLoading"
-                :processSuccess="processSuccess"
-                variant="primary"
-                @process-finish="saveFinish"
-                @click="onClickSaveCompile">
+                    v-if="module"
+                    :isLoading="isLoading"
+                    :processSuccess="processSuccess"
+                    :disabled="module.isNew() ? !acl.can('dne_custom_js_css.creator') : !acl.can('dne_custom_js_css.editor')"
+                    variant="primary"
+                    @process-finish="saveFinish"
+                    @click="onClickSaveCompile">
                 {{ $t('dne-customcssjs.modules.saveCompileButton') }}
             </sw-button-process>
         </template>
@@ -29,16 +33,32 @@
                 <sw-card v-if="module" :isLoading="isLoading">
                     <sw-checkbox-field :label="$t('dne-customcssjs.modules.activeLabel')" v-model="module.active"></sw-checkbox-field>
 
-                    <sw-field type="text"
-                              :label="$t('dne-customcssjs.modules.nameLabel')"
-                              v-model="module.name"
-                              validation="required"
-                              :error="moduleNameError"
-                              required>
+                    <sw-container columns="1fr 1fr" gap="16px">
+                        <sw-field type="text"
+                                  :label="$t('dne-customcssjs.modules.nameLabel')"
+                                  v-model="module.name"
+                                  validation="required"
+                                  :error="moduleNameError"
+                                  required>
+                        </sw-field>
+
+                        <sw-entity-many-to-many-select
+                            :localMode="module.isNew()"
+                            :label="$t('dne-customcssjs.modules.salesChannelsLabel')"
+                            :placeholder="$t('dne-customcssjs.modules.salesChannelsAll')"
+                            v-model="module.salesChannels">
+                        </sw-entity-many-to-many-select>
+                    </sw-container>
+
+                    <sw-field type="compactColorpicker"
+                              compact
+                              :alpha="false"
+                              @input="pickColor">
                     </sw-field>
 
                     <sw-code-editor
                         :label="$t('dne-customcssjs.modules.cssLabel')"
+                        ref="cssEditor"
                         name="css"
                         identifier="value"
                         completionMode="entity"
@@ -56,9 +76,7 @@
                     </sw-code-editor>
                 </sw-card>
                 <sw-card>
-                    <a href="https://github.com/dneustadt/DneCustomCssJs" target="_blank">
-                        {{ $t('dne-customcssjs.modules.donateText') }}
-                    </a>
+                    <p>{{ $t('dne-customcssjs.modules.migrationNotice') }}</p>
                 </sw-card>
             </sw-card-view>
         </template>
