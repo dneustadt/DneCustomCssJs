@@ -9,7 +9,7 @@
     },
     "authors": [
         {
-            "name": "David Neustadt"
+            "name": "Open Source Plugins"
         }
     ],
     "extra": {
@@ -24,12 +24,12 @@
             "en-GB": "Container manager to easily add custom JavaScript and/or SCSS to the theme compilation."
         },
         "manufacturerLink": {
-            "de-DE": "https://store.shopware.com/david-neustadt.html",
-            "en-GB": "https://store.shopware.com/en/david-neustadt.html"
+            "de-DE": "https://store.shopware.com/open-source-plugins.html",
+            "en-GB": "https://store.shopware.com/en/open-source-plugins.html"
         },
         "supportLink": {
-            "de-DE": "https://davidneustadt.de",
-            "en-GB": "https://neustadt.dev"
+            "de-DE": "https://github.com/dneustadt",
+            "en-GB": "https://github.com/dneustadt"
         }
     },
     "autoload": {

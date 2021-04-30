@@ -1,13 +1,10 @@
 Custom JavaScript And CSS/SCSS Containers for Shopware 6
 =====
-[![Donate](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=88UMDD53QSYK6&source=url)
 
 This plugin for [Shopware 6](https://www.shopware.de) features a backend container manager to easily add custom
 JavaScript and/or CSS/SCSS to the theme compilation.
 
 This plugin is the follow-up for the [Shopware 5.x version](https://github.com/dneustadt/DneCustomJsCss).
-
-_If you want to buy me a cup of coffee or support the development of this free extension, feel free to donate :)_
 
 The plugin offers the following features:
 
