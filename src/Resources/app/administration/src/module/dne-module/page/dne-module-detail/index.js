@@ -1,6 +1,6 @@
 import template from './dne-module-detail.html.twig';
 import './dne-module-detail.scss';
-import '@ace-builds/mode-scss';
+import './vendor/mode-scss';
 
 const { Component, Mixin, Filter } = Shopware;
 const { mapPropertyErrors } = Shopware.Component.getComponentHelper();
@@ -94,7 +94,7 @@ Component.register('dne-module-detail', {
                     this.processSuccess = true;
                 }).catch((exception) => {
                     this.isLoading = false;
-                    if (module.name && module.name.length) {
+                    if (this.module.name && this.module.name.length) {
                         this.createNotificationError({
                             title: 'Error',
                             message: exception
