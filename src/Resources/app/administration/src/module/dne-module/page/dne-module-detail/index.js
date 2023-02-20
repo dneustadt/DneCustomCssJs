@@ -1,9 +1,9 @@
 import template from './dne-module-detail.html.twig';
 import './dne-module-detail.scss';
-import './vendor/mode-scss';
 
 const { Component, Mixin, Filter } = Shopware;
 const { mapPropertyErrors } = Shopware.Component.getComponentHelper();
+const { Criteria } = Shopware.Data;
 
 Component.register('dne-module-detail', {
     template,
@@ -11,7 +11,8 @@ Component.register('dne-module-detail', {
     inject: [
         'repositoryFactory',
         'context',
-        'acl'
+        'acl',
+        'themeService',
     ],
 
 
@@ -53,8 +54,11 @@ Component.register('dne-module-detail', {
         },
         editorConfigSass() {
             return {
-                mode: 'ace/mode/scss'
+                mode: 'ace/mode/css'
             };
+        },
+        salesChannelRepository() {
+            return this.repositoryFactory.create('sales_channel');
         },
         ...mapPropertyErrors('module', ['name'])
     },
@@ -107,12 +111,7 @@ Component.register('dne-module-detail', {
             this.onClickSave().then(() => {
                 this.isLoading = true;
 
-                const basicHeaders = {
-                    Authorization: `Bearer ${Shopware.Context.api.authToken.access}`,
-                    'Content-Type': 'application/json'
-                };
-
-                this.httpClient.get('_action/dne-customcssjs/compile', { headers: basicHeaders }).then(() => {
+                this.compileTheme().then(() => {
                     this.isLoading = false;
                 }).catch((errorResponse) => {
                     this.isLoading = false;
@@ -150,6 +149,21 @@ Component.register('dne-module-detail', {
 
             editor.session.insert(editor.getCursorPosition(), hex);
             editor.renderer.scrollCursorIntoView(editor.getCursorPosition(), 0.5);
-        }
-    }
+        },
+
+        async compileTheme() {
+            const criteria = new Criteria();
+            criteria.addAssociation('themes');
+
+            const salesChannels = await this.salesChannelRepository.search(criteria, Shopware.Context.api);
+
+            for (let salesChannel of salesChannels) {
+                const theme = salesChannel.extensions.themes.first();
+
+                if (theme) {
+                    await this.themeService.assignTheme(theme.id, salesChannel.id);
+                }
+            }
+        },
+    },
 });

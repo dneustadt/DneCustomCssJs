@@ -9,7 +9,8 @@ Component.register('dne-module-list', {
     inject: [
         'repositoryFactory',
         'context',
-        'acl'
+        'acl',
+        'themeService',
     ],
 
     data() {
@@ -53,19 +54,17 @@ Component.register('dne-module-list', {
                     sortable: false
                 }
             ];
-        }
+        },
+
+        salesChannelRepository() {
+            return this.repositoryFactory.create('sales_channel');
+        },
     },
 
     created() {
         this.repository = this.repositoryFactory.create('dne_custom_js_css');
 
-        const httpClient = Shopware.Service('syncService').httpClient;
-        const basicHeaders = {
-            Authorization: `Bearer ${Shopware.Context.api.authToken.access}`,
-            'Content-Type': 'application/json'
-        };
         const criteria = new Criteria();
-
         criteria.addAssociation('salesChannels');
         criteria.addSorting(Criteria.sort('name', 'ASC', false));
 
@@ -78,7 +77,7 @@ Component.register('dne-module-list', {
                 this.$nextTick().then(() => {
                     this.$refs.listing.$on('delete-item-finish', () => {
                         this.isLoading = true;
-                        httpClient.get('_action/dne-customcssjs/compile', { headers: basicHeaders }).then(() => {
+                        this.compileTheme().then(() => {
                             this.isLoading = false;
                         }).catch(() => {
                             this.isLoading = false;
@@ -86,5 +85,22 @@ Component.register('dne-module-list', {
                     });
                 });
             });
-    }
+    },
+
+    methods: {
+        async compileTheme() {
+            const criteria = new Criteria();
+            criteria.addAssociation('themes');
+
+            const salesChannels = await this.salesChannelRepository.search(criteria, Shopware.Context.api);
+
+            for (let salesChannel of salesChannels) {
+                const theme = salesChannel.extensions.themes.first();
+
+                if (theme) {
+                    await this.themeService.assignTheme(theme.id, salesChannel.id);
+                }
+            }
+        },
+    },
 });

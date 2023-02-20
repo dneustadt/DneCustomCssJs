@@ -3,7 +3,7 @@
 namespace Dne\CustomCssJs\Subscriber;
 
 use Shopware\Core\Framework\Context;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Aggregation\Bucket\TermsAggregation;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Bucket\TermsResult;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
@@ -12,20 +12,16 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\MultiFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Sorting\FieldSorting;
 use Shopware\Storefront\Event\ThemeCompilerConcatenatedScriptsEvent;
 use Shopware\Storefront\Event\ThemeCompilerConcatenatedStylesEvent;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class ThemeCompilerSubscriber implements \Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ThemeCompilerSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var EntityRepositoryInterface
-     */
-    private $repository;
+    private EntityRepository $repository;
 
-    public function __construct(
-        EntityRepositoryInterface $repository
-    ) {
+    public function __construct(EntityRepository $repository)
+    {
         $this->repository = $repository;
     }
-
 
     public static function getSubscribedEvents(): array
     {

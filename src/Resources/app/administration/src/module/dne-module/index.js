@@ -8,7 +8,7 @@ const { Module } = Shopware;
 
 Module.register('dne-module', {
     color: '#ff3d58',
-    icon: 'default-text-code',
+    icon: 'regular-code',
     title: 'dne-customcssjs.modules.title',
     description: '',
 

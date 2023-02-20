@@ -39,8 +39,8 @@ class ModuleDefinition extends EntityDefinition
             (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
             (new StringField('name', 'name'))->addFlags(new Required()),
             (new BoolField('active', 'active')),
-            (new LongTextField('js', 'js'))->addFlags(new AllowHtml()),
-            (new LongTextField('css', 'css'))->addFlags(new AllowHtml()),
+            (new LongTextField('js', 'js'))->addFlags(new AllowHtml(false)),
+            (new LongTextField('css', 'css'))->addFlags(new AllowHtml(false)),
             new ManyToManyAssociationField(
                 'salesChannels',
                 SalesChannelDefinition::class,

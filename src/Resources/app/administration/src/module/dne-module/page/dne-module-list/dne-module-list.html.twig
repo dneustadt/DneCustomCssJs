@@ -29,10 +29,13 @@
                         </sw-data-grid-column-boolean>
                     </template>
                     <template #column-salesChannels="{ item }">
-                        <sw-event-action-list-expand-labels
-                            v-if="item.salesChannels.length"
-                            :items="item.salesChannels">
-                        </sw-event-action-list-expand-labels>
+                        <div v-if="item.salesChannels.length">
+                            <sw-label
+                                v-for="salesChannel in item.salesChannels"
+                                :key="salesChannel.id">
+                                {{ salesChannel.name }}
+                            </sw-label>
+                        </div>
                         <span v-else>
                             {{ $t('dne-customcssjs.modules.salesChannelsAll') }}
                         </span>

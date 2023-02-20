@@ -12,8 +12,7 @@
             "activeLabel": "Active",
             "saveButton": "Save",
             "saveCompileButton": "Save & Compile",
-            "cancelButton": "Cancel",
-            "migrationNotice": "NOTICE: Future versions of this plugins will be provided by the developer collective Friends Of Shopware within the Shopware Store"
+            "cancelButton": "Cancel"
         }
     },
     "sw-privileges": {

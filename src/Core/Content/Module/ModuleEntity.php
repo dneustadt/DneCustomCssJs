@@ -10,25 +10,13 @@ class ModuleEntity extends Entity
 {
     use EntityIdTrait;
 
-    /**
-     * @var string
-     */
-    protected $name;
+    protected string $name;
 
-    /**
-     * @var string
-     */
-    protected $module;
+    protected string $module;
 
-    /**
-     * @var string
-     */
-    protected $response;
+    protected string $response;
 
-    /**
-     * @var SalesChannelCollection|null
-     */
-    protected $salesChannels;
+    protected ?SalesChannelCollection $salesChannels = null;
 
     public function getName(): string
     {
