@@ -73,9 +73,9 @@ Component.register('dne-module-detail', {
 
     methods: {
         getModule() {
-            if (this.moduleId) {
+            if (this.moduleId || this.module?.id) {
                 this.repository
-                    .get(this.moduleId, Shopware.Context.api)
+                    .get(this.moduleId || this.module?.id, Shopware.Context.api)
                     .then((entity) => {
                         this.module = entity;
                     });
@@ -91,7 +91,7 @@ Component.register('dne-module-detail', {
                 .save(this.module, Shopware.Context.api)
                 .then(() => {
                     if (!this.moduleId) {
-                        this.moduleId = this.module.id;
+                        this.$router.push({ name: 'dne.module.detail', params: { id: this.module.id } });
                     }
                     this.getModule();
                     this.isLoading = false;

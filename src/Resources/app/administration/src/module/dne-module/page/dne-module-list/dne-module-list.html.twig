@@ -1,7 +1,7 @@
 {% block dne_module_list %}
     <sw-page class="dne-module-list">
         {% block dne_module_list_smart_bar_actions %}
-            <template slot="smart-bar-actions">
+            <template #smart-bar-actions>
                 <sw-button
                     variant="primary"
                     :routerLink="{ name: 'dne.module.create' }"
@@ -12,7 +12,7 @@
             </template>
         {% endblock %}
 
-        <template slot="content">
+        <template #content>
             {% block dne_module_list_content %}
                 <sw-entity-listing
                         v-if="modules"

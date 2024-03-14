@@ -13,6 +13,8 @@ use Shopware\Core\System\SalesChannel\SalesChannelDefinition;
 
 class ModuleSalesChannelDefinition extends MappingEntityDefinition
 {
+    public const ENTITY_NAME = 'dne_custom_js_css_sales_channel';
+
     public function getEntityName(): string
     {
         return 'dne_custom_js_css_sales_channel';
